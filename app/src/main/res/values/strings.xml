@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">Imenu-restaurant</string>
     <string name="action_settings">Settings</string>
+    <string name="admin">Admin</string>
+    <string name="chef">Chef</string>
+    <string name="waiter">Waiter</string>
+    <string name="cashier">Cachier</string>
+    <string name="manager">Manager</string>
+    <string name="title_activity_admin">AdminActivity</string>
 </resources>
