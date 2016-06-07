@@ -23,6 +23,14 @@
         <activity
             android:name=".activity.AdminActivity"
             android:label="@string/title_activity_admin"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.ChefActivity"
+            android:label="@string/title_activity_chef"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.WaiterActivity"
+            android:label="@string/title_activity_waiter"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

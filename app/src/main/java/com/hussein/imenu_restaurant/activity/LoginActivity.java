@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.widget.Button;
 
 import com.hussein.imenu_restaurant.R;
+import com.hussein.imenu_restaurant.model.Waiter;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -26,9 +27,29 @@ public class LoginActivity extends AppCompatActivity {
         adminLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent adminIntent = new Intent(LoginActivity.this,AdminActivity.class);
+                Intent adminIntent = new Intent(LoginActivity.this, AdminActivity.class);
                 adminIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(adminIntent);
+            }
+        });
+
+        Button chefLogin = (Button) findViewById(R.id.chef_login);
+        chefLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent chefIntent = new Intent(LoginActivity.this, ChefActivity.class);
+                chefIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(chefIntent);
+            }
+        });
+
+        Button waiterLogin = (Button) findViewById(R.id.waiter_login);
+        waiterLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent waiterIntent = new Intent(LoginActivity.this, WaiterActivity.class);
+                waiterIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(waiterIntent);
             }
         });
     }

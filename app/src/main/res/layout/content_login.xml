@@ -17,30 +17,40 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/admin"
-        android:layout_margin="20dp"
+        android:padding="20dp"
+        android:layout_margin="10dp"
+        android:textSize="30sp"
         android:id="@+id/admin_login"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/chef"
-        android:layout_margin="20dp"
+        android:padding="20dp"
+        android:layout_margin="10dp"
+        android:textSize="30sp"
         android:id="@+id/chef_login"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/waiter"
-        android:layout_margin="20dp"
+        android:padding="20dp"
+        android:layout_margin="10dp"
+        android:textSize="30sp"
         android:id="@+id/waiter_login"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/cashier"
-        android:layout_margin="20dp"
+        android:padding="20dp"
+        android:layout_margin="10dp"
+        android:textSize="30sp"
         android:id="@+id/cashier_login"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/manager"
-        android:layout_margin="20dp"
+        android:padding="20dp"
+        android:layout_margin="10dp"
+        android:textSize="30sp"
         android:id="@+id/manager_login"/>
 </LinearLayout>

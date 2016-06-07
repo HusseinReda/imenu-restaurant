@@ -21,8 +21,8 @@ public class    Restaurant implements Serializable {
     private List<Contact> contacts;
     private ArrayList<RestaurantReview> reviews;
     private List<ServiceTable> serviceTables;
-    private List<Chef> chefs;
-    private List<Waiter> waiters;
+    private Chef chef;
+    private Waiter waiter;
     private Manager manager;
     private Cashier cashier;
     private float rating;
@@ -111,20 +111,20 @@ public class    Restaurant implements Serializable {
         this.serviceTables = serviceTables;
     }
 
-    public List<Chef> getChefs() {
-        return chefs;
+    public Chef getChef() {
+        return chef;
     }
 
-    public void setChefs(List<Chef> chefs) {
-        this.chefs = chefs;
+    public void setChef(Chef chef) {
+        this.chef = chef;
     }
 
-    public List<Waiter> getWaiters() {
-        return waiters;
+    public Waiter getWaiter() {
+        return waiter;
     }
 
-    public void setWaiters(List<Waiter> waiters) {
-        this.waiters = waiters;
+    public void setWaiter(Waiter waiter) {
+        this.waiter = waiter;
     }
 
     public Manager getManager() {
