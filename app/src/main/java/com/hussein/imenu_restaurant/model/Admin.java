@@ -7,5 +7,7 @@ import java.util.Date;
  */
 
 public class Admin extends Employee{
-
+    public Admin(String name, String email, String password, Restaurant restaurant) {
+        super(name, email, password, restaurant);
+    }
 }

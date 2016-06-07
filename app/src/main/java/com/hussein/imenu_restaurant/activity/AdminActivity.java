@@ -5,17 +5,23 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
 import com.hussein.imenu_restaurant.R;
+import com.hussein.imenu_restaurant.model.Cashier;
+import com.hussein.imenu_restaurant.model.Chef;
+import com.hussein.imenu_restaurant.model.Employee;
 import com.hussein.imenu_restaurant.model.Item;
+import com.hussein.imenu_restaurant.model.Manager;
 import com.hussein.imenu_restaurant.model.Menu;
 import com.hussein.imenu_restaurant.model.Restaurant;
 import com.hussein.imenu_restaurant.model.Section;
 import com.hussein.imenu_restaurant.model.UserSpec;
+import com.hussein.imenu_restaurant.model.Waiter;
 import com.hussein.imenu_restaurant.service.AddRestaurant;
 import com.hussein.imenu_restaurant.service.AddUserSpecService;
 
@@ -38,8 +44,8 @@ public class AdminActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 List<Restaurant> restaurants = createRestaurants();
-                for(int i=0;i<restaurants.size();i++)
-                    new AddRestaurant(AdminActivity.this,restaurants.get(i)).execute();
+                for (int i = 0; i < restaurants.size(); i++)
+                    new AddRestaurant(AdminActivity.this, restaurants.get(i)).execute();
             }
         });
 
@@ -52,6 +58,15 @@ public class AdminActivity extends AppCompatActivity {
                     new AddUserSpecService(AdminActivity.this,userSpecs.get(i)).execute();
             }
         });
+        Button addStaff = (Button) findViewById(R.id.add_staff);
+        addStaff.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i("AdminActivity", "add staff");
+
+            }
+        });
+
     }
 
     //TODO options menu to be configured
@@ -80,8 +95,18 @@ public class AdminActivity extends AppCompatActivity {
 //                return super.onOptionsItemSelected(item);
 //        }
 //    }
-
-
+    private List<Employee> generateEmployees(){
+        List <Employee> employees = new ArrayList<Employee>();
+        Waiter waiter = new Waiter("Ahmed","ahmed@gmail.com","12345",null);
+        Chef chef = new Chef("Mohamed","mohamed@gmail.com","34567",null);
+        Cashier cashier = new Cashier("Magdy","magdy@gmail.com","5678",null);
+        Manager manager = new Manager ("heba","heba@gmail.com","148952",null);
+        employees.add (manager);
+        employees.add (chef);
+        employees.add (waiter);
+        employees.add (cashier);
+        return employees;
+    }
     private List<Restaurant> createRestaurants() {
         List<Restaurant> restaurants = new ArrayList<Restaurant>();
         Restaurant restaurant_kfc= new Restaurant("KFC","Fast food","KFC Cairo",

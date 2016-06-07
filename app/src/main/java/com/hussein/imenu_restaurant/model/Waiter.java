@@ -6,4 +6,7 @@ package com.hussein.imenu_restaurant.model;
 
 public class Waiter extends Employee{
 
+    public Waiter(String name, String email, String password, Restaurant restaurant) {
+        super(name, email, password, restaurant);
+    }
 }

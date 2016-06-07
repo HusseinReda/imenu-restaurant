@@ -6,8 +6,15 @@ package com.hussein.imenu_restaurant.model;
 
 public class Employee {
     private Long id;
-    String email;
-    String password;
-    String name;
+    private String email;
+    private String password;
+    private String name;
     private Restaurant restaurant;
+    public  Employee(){}
+    public Employee(String name, String email, String password, Restaurant restaurant) {
+        this.email = email;
+        this.password = password;
+        this.name = name;
+        this.restaurant = restaurant;
+    }
 }

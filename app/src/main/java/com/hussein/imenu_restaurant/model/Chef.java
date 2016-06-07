@@ -5,5 +5,7 @@ package com.hussein.imenu_restaurant.model;
  */
 
 public class Chef extends Employee{
-
+    public Chef(String name, String email, String password, Restaurant restaurant) {
+        super(name, email, password, restaurant);
+    }
 }
