@@ -11,6 +11,7 @@ import com.hussein.imenu_restaurant.model.Restaurant;
 import com.hussein.imenu_restaurant.model.Section;
 
 import org.springframework.http.converter.StringHttpMessageConverter;
+import org.springframework.http.converter.json.GsonHttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
 
@@ -21,22 +22,27 @@ import java.util.Arrays;
 /**
  * Created by hamed on 4/1/16.
  */
-public class AddRestaurant extends AsyncTask<Void,Void,String> {
+public class AddUpdateRestaurant extends AsyncTask<Void,Void,String> {
     Context context;
     Restaurant restaurant;
+    boolean type; // true: add , false: update
 
-    public AddRestaurant(Context context,Restaurant restaurant) {
+    public AddUpdateRestaurant(Context context, Restaurant restaurant, boolean type) {
         this.context = context;
         this.restaurant=restaurant;
+        this.type = type;
     }
 
     @Override
     protected String doInBackground(Void... params) {
         RestTemplate restTemplate=  new RestTemplate();
-        restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
+        restTemplate.getMessageConverters().add(new GsonHttpMessageConverter());
         restTemplate.getMessageConverters().add(new StringHttpMessageConverter());
-
-        String response = restTemplate.postForObject(context.getString(R.string.url)+"restaurant/add",restaurant,String.class);
+        String response="";
+        if(type)
+            response = restTemplate.postForObject(context.getString(R.string.url) + "restaurant/add", restaurant, String.class);
+        else
+            response = restTemplate.postForObject(context.getString(R.string.url)+"restaurant/update",restaurant,String.class);
 
         return response;
     }

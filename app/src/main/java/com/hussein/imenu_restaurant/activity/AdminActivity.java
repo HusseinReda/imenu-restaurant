@@ -1,28 +1,21 @@
 package com.hussein.imenu_restaurant.activity;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
 import com.hussein.imenu_restaurant.R;
-import com.hussein.imenu_restaurant.model.Cashier;
-import com.hussein.imenu_restaurant.model.Chef;
-import com.hussein.imenu_restaurant.model.Employee;
+import com.hussein.imenu_restaurant.model.Admin;
 import com.hussein.imenu_restaurant.model.Item;
-import com.hussein.imenu_restaurant.model.Manager;
 import com.hussein.imenu_restaurant.model.Menu;
 import com.hussein.imenu_restaurant.model.Restaurant;
 import com.hussein.imenu_restaurant.model.Section;
 import com.hussein.imenu_restaurant.model.UserSpec;
-import com.hussein.imenu_restaurant.model.Waiter;
-import com.hussein.imenu_restaurant.service.AddRestaurant;
+import com.hussein.imenu_restaurant.service.AddAdmin;
+import com.hussein.imenu_restaurant.service.AddUpdateRestaurant;
 import com.hussein.imenu_restaurant.service.AddUserSpecService;
 
 import java.util.ArrayList;
@@ -30,6 +23,8 @@ import java.util.Arrays;
 import java.util.List;
 
 public class AdminActivity extends AppCompatActivity {
+
+    Restaurant KFC;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +40,8 @@ public class AdminActivity extends AppCompatActivity {
             public void onClick(View v) {
                 List<Restaurant> restaurants = createRestaurants();
                 for (int i = 0; i < restaurants.size(); i++)
-                    new AddRestaurant(AdminActivity.this, restaurants.get(i)).execute();
+                    new AddUpdateRestaurant(AdminActivity.this, restaurants.get(i),true).execute();
+//                new AddUpdateRestaurant(AdminActivity.this, KFC,false).execute();
             }
         });
 
@@ -58,12 +54,13 @@ public class AdminActivity extends AppCompatActivity {
                     new AddUserSpecService(AdminActivity.this,userSpecs.get(i)).execute();
             }
         });
-        Button addStaff = (Button) findViewById(R.id.add_staff);
-        addStaff.setOnClickListener(new View.OnClickListener() {
+        Button addAdmin = (Button) findViewById(R.id.add_admin);
+        addAdmin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.i("AdminActivity", "add staff");
-
+                Log.i("AdminActivity", "add admin");
+                Admin admin = new Admin("AbdelRahman","abdo@gmail.com","11111",KFC);
+                new AddAdmin(AdminActivity.this,admin).execute();
             }
         });
 
@@ -95,24 +92,18 @@ public class AdminActivity extends AppCompatActivity {
 //                return super.onOptionsItemSelected(item);
 //        }
 //    }
-    private List<Employee> generateEmployees(){
-        List <Employee> employees = new ArrayList<Employee>();
-        Waiter waiter = new Waiter("Ahmed","ahmed@gmail.com","12345",null);
-        Chef chef = new Chef("Mohamed","mohamed@gmail.com","34567",null);
-        Cashier cashier = new Cashier("Magdy","magdy@gmail.com","5678",null);
-        Manager manager = new Manager ("heba","heba@gmail.com","148952",null);
-        employees.add (manager);
-        employees.add (chef);
-        employees.add (waiter);
-        employees.add (cashier);
-        return employees;
+    private void addEmployees(){
+
     }
     private List<Restaurant> createRestaurants() {
         List<Restaurant> restaurants = new ArrayList<Restaurant>();
+
         Restaurant restaurant_kfc= new Restaurant("KFC","Fast food","KFC Cairo",
                 "https://marketing.otlob.com/images/nl/otlob/kfcL.png",
                 null,null);
+
         Menu menu = new Menu();
+
         String names[] = {"Mighty Bucket Meal","Mighty Popcorn Meal","My Meal","Super Snack Meal","Super Snack Meal",
                 "Dinner Box","Dinner Box","Extra Chicken Piece"};
         String urls[]={"https://assets.otlob.com/dynamic/images/products/62/62574_1453380791_ma.png",
@@ -142,12 +133,16 @@ public class AdminActivity extends AppCompatActivity {
                 new ArrayList<String>(Arrays.asList("samira","4 pieces","fries","small fries","coleslaw","salad","bun","bread", "KFC")),
                 new ArrayList<String>(Arrays.asList("chicken","3 pieces","fries","medium fries","coleslaw","salad","bun","bread", "KFC"))
         };
+
         ArrayList<Item> items = new ArrayList<Item>();
         for (int i=0;i<names.length;i++) {
             items.add(new Item(names[i],"KFC", "chicken", prices[i], descriptions[i], keywords[i], urls[i]));
         }
+
         Section section = new Section("Chicken",items);
+
         menu.addSection(section);
+
         String names2[] = {" Crispy Strips Light Meal","Crispy Strips Meal","Crispy Strips Meal","Crispy Strips Piece"};
         String urls2[] = {"https://assets.otlob.com/dynamic/images/products/62/62863_1453381191_ma.png",
                 "https://assets.otlob.com/dynamic/images/products/62/62864_1453381190_ma.png",
@@ -164,11 +159,37 @@ public class AdminActivity extends AppCompatActivity {
                 new ArrayList<String>(Arrays.asList("chicken","5 pieces","crispy","bun","bread","fries","small fries")),
                 null,
         };
+
         ArrayList<Item> items2 = new ArrayList<Item>();
         Section section2 = new Section("Crispy",items2);
         menu.addSection(section2);
         restaurant_kfc.addMenu(menu);
 
+//        Chef chef = new Chef("Mohamed","mohamed@gmail.com","34567",restaurant_kfc);
+//        Waiter waiter = new Waiter("Ahmed","ahmed@gmail.com","12345",restaurant_kfc);
+//        Cashier cashier = new Cashier("Amr","Amr@gmail.com","5678",restaurant_kfc);
+//        Manager manager = new Manager ("Yasser","Yasser@gmail.com","148952",restaurant_kfc);
+//
+//        List<ServiceTable> serviceTables = new ArrayList<ServiceTable>();
+//        ServiceTable serviceTable1 = new ServiceTable(restaurant_kfc,waiter,1);
+//        ServiceTable serviceTable2 = new ServiceTable(restaurant_kfc,waiter,1);
+//        ServiceTable serviceTable3 = new ServiceTable(restaurant_kfc,waiter,1);
+//        ServiceTable serviceTable4 = new ServiceTable(restaurant_kfc,waiter,1);
+//        ServiceTable serviceTable5 = new ServiceTable(restaurant_kfc,waiter,1);
+//
+//        serviceTables.add(serviceTable1);
+//        serviceTables.add(serviceTable2);
+//        serviceTables.add(serviceTable3);
+//        serviceTables.add(serviceTable4);
+//        serviceTables.add(serviceTable5);
+//
+//        restaurant_kfc.setChef(chef);
+//        restaurant_kfc.setCashier(cashier);
+//        restaurant_kfc.setManager(manager);
+//        restaurant_kfc.setServiceTables(serviceTables);
+
+        KFC=restaurant_kfc;
+//        KFC.setWaiter(waiter);
         restaurants.add(restaurant_kfc);
 
         Restaurant restaurant_mac= new Restaurant("MAC","Fast food","MAC Cairo",
@@ -205,6 +226,7 @@ public class AdminActivity extends AppCompatActivity {
                 new ArrayList<String>(Arrays.asList("Bread","Pork","pork","Burger","beef","Cheese","Ketchup","Onions","Pickles","beef", "mac", "macdonalds")),
                 new ArrayList<String>(Arrays.asList("Arabic bread","Beans","beans","beef","Lettuce","Tomatoes","Onions","Garlic","bun","bread", "mac", "macdonalds"))
         };
+
         ArrayList<Item> items_mac = new ArrayList<Item>();
         for (int i=0;i<names.length;i++) {
             items_mac.add(new Item(names_mac[i],"MAC", "Burger", prices_mac[i], descriptions_mac[i], keywords_mac[i], urls_mac[i]));

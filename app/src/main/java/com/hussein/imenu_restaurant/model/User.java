@@ -3,7 +3,6 @@ package com.hussein.imenu_restaurant.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -11,8 +10,7 @@ import java.util.List;
  */
 
 public class User implements Serializable {
-    private int id;
-    private int state;
+    private long id;
     private String name;
     private String email;
     private String password;
@@ -23,18 +21,22 @@ public class User implements Serializable {
     private String city;
     private String picture;
     private byte[] image;
-    ///////
-    private ArrayList<Contact> contacts;
     //////
     private ArrayList<String> preferences;
     private List<UserSpec> healthIssues;
     private List<UserSpec> restrictions;
-    private ArrayList<Review> reviews;
+
+    private int state;
+    /*
+    1 -> not connected
+    2 -> connected
+    3 -> ordered
+     */
 
     public User() {
     }
 
-    public User(String name, String email, String password, String gender, Date dateOfBirth, String country, String city) {
+    public User(String name, String email, String password, String gender, Date dateOfBirth, String country, String city, int state) {
         this.name = name;
         this.email = email;
         this.password = password;
@@ -42,6 +44,7 @@ public class User implements Serializable {
         this.dateOfBirth = dateOfBirth;
         this.country = country;
         this.city = city;
+        this.state = state;
     }
 
     public User(String name, String email, String password, String gender) {
@@ -52,7 +55,7 @@ public class User implements Serializable {
         this.preferences=new ArrayList<String>();
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
@@ -264,11 +267,9 @@ public class User implements Serializable {
         this.country = user.country;
         this.city = user.city;
         this.picture = user.picture;
-        this.contacts = user.contacts;
         this.preferences = user.preferences;
         this.healthIssues = user.healthIssues;
         this.restrictions = user.restrictions;
-        this.reviews = user.reviews;
         this.image = user.image;
     }
 

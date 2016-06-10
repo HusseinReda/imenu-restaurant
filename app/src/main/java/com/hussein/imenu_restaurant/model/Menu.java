@@ -31,6 +31,7 @@ public class Menu implements Serializable{
         sections.add(section);
         // call the service
     }
+
     public void removeSection (int sectionId) {
         ArrayList<Section> temp = new ArrayList<Section>();
         for (int i=0;i<sections.size();i++){

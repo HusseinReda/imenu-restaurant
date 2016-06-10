@@ -12,12 +12,61 @@ public class Order {
     /*
     There are 3 states
     ------------------
-    0 -> not ordered
-    1 -> ordered
-    2 -> paid
+    1 -> not ordered
+    2 -> ordered
+    3 -> delivered
+    4 -> paid
      */
     int state;
     User user;
     ServiceTable serviceTable;
-    List<ItemCard> itemCardList;
+    List<OrderCard> orderCardList;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public double getPayCheck() {
+        return payCheck;
+    }
+
+    public void setPayCheck(double payCheck) {
+        this.payCheck = payCheck;
+    }
+
+    public int getState() {
+        return state;
+    }
+
+    public void setState(int state) {
+        this.state = state;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public ServiceTable getServiceTable() {
+        return serviceTable;
+    }
+
+    public void setServiceTable(ServiceTable serviceTable) {
+        this.serviceTable = serviceTable;
+    }
+
+    public List<OrderCard> getOrderCardList() {
+        return orderCardList;
+    }
+
+    public void setOrderCardList(List<OrderCard> orderCardList) {
+        this.orderCardList = orderCardList;
+    }
 }

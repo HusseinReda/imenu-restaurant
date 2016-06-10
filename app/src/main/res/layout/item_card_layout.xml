@@ -9,7 +9,6 @@
     card_view:cardCornerRadius="10dp"
     card_view:cardElevation="5dp"
     android:layout_margin="5dp"
-    android:clickable="true"
     android:foreground="?android:selectableItemBackground">
 
     <RelativeLayout
@@ -35,37 +34,43 @@
             android:id="@+id/cardview_item_name"
             android:layout_toRightOf="@+id/cardview_item_image"
             android:layout_alignParentTop="true"
-            android:textSize="20sp"
-            android:ellipsize="end"
-            android:maxLines="1"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/cardview_item_restaurant_name"
-            android:layout_toRightOf="@+id/cardview_item_image"
-            android:layout_below="@+id/cardview_item_name"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/cardview_item_description"
-            android:layout_toRightOf="@+id/cardview_item_image"
-            android:layout_below="@+id/cardview_item_restaurant_name"
             android:ellipsize="end"
             android:maxLines="1"
             />
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/cardview_item_price"
-            android:layout_toRightOf="@+id/cardview_item_image"
-            android:layout_below="@+id/cardview_item_description"
-            android:gravity="bottom|end"
+            android:layout_height="wrap_content"
+            android:id="@+id/card_view_item_count"
+            android:layout_toRightOf="@id/cardview_item_name"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/card_view_item_state"
+            android:layout_toRightOf="@id/cardview_item_image"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/card_view_item_count"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/card_view_done_button"
+            android:layout_below="@id/card_view_item_count"
+            android:text="@string/done"
+            android:layout_alignParentRight="true"
+            android:enabled="false"
             />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/card_view_cooking_button"
+            android:layout_below="@id/card_view_item_count"
+            android:text="@string/cooking"
+            android:layout_toLeftOf="@id/card_view_done_button"
+            />
+
+
 
         <TextView
             android:layout_width="wrap_content"

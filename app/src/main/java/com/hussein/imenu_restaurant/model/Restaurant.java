@@ -11,7 +11,7 @@ import java.util.List;
  */
 
 @JsonIgnoreProperties(ignoreUnknown=true)
-public class    Restaurant implements Serializable {
+public class Restaurant implements Serializable {
     private int id;
     private String name;
     private String category;
@@ -155,6 +155,20 @@ public class    Restaurant implements Serializable {
         this.contacts = contacts;
     }
 
+    public Restaurant(String name, String category, String description, String picture, Menu menu, List<Contact> contacts, List<ServiceTable> serviceTables, Chef chef, Waiter waiter, Manager manager, Cashier cashier) {
+        this.name = name;
+        this.category = category;
+        this.description = description;
+        this.picture = picture;
+        this.menu = menu;
+        this.contacts = contacts;
+        this.serviceTables = serviceTables;
+        this.chef = chef;
+        this.waiter = waiter;
+        this.manager = manager;
+        this.cashier = cashier;
+    }
+
     public void addContact (Contact contact){
         contacts.add(contact);
         // call the service
@@ -164,5 +178,7 @@ public class    Restaurant implements Serializable {
         reviews.add(review);
         // call the service
     }
+
+
 
 }

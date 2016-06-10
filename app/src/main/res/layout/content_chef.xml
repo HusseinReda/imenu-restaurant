@@ -12,4 +12,11 @@
     tools:context="com.hussein.imenu_restaurant.activity.ChefActivity"
     tools:showIn="@layout/activity_chef">
 
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/chef_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical">
+    </android.support.v7.widget.RecyclerView>
+
 </RelativeLayout>

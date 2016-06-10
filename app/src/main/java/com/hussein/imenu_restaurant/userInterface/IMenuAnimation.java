@@ -32,4 +32,26 @@ public class IMenuAnimation {
             }
         }
     }
+
+    public static void fade_in(Context context, View v){
+        android.view.animation.Animation animation = AnimationUtils.loadAnimation(context, R.anim.fade_in);
+        if(animation != null){
+            animation.reset();
+            if(v != null){
+                v.clearAnimation();
+                v.startAnimation(animation);
+            }
+        }
+    }
+
+    public static void fade_out(Context context, View v){
+        android.view.animation.Animation animation = AnimationUtils.loadAnimation(context, R.anim.fade_out);
+        if(animation != null){
+            animation.reset();
+            if(v != null){
+                v.clearAnimation();
+                v.startAnimation(animation);
+            }
+        }
+    }
 }
