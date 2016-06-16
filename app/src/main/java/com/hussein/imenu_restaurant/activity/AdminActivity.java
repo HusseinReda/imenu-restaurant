@@ -9,14 +9,24 @@ import android.widget.Button;
 
 import com.hussein.imenu_restaurant.R;
 import com.hussein.imenu_restaurant.model.Admin;
+import com.hussein.imenu_restaurant.model.Cashier;
+import com.hussein.imenu_restaurant.model.Chef;
 import com.hussein.imenu_restaurant.model.Item;
+import com.hussein.imenu_restaurant.model.Manager;
 import com.hussein.imenu_restaurant.model.Menu;
 import com.hussein.imenu_restaurant.model.Restaurant;
 import com.hussein.imenu_restaurant.model.Section;
+import com.hussein.imenu_restaurant.model.ServiceTable;
 import com.hussein.imenu_restaurant.model.UserSpec;
+import com.hussein.imenu_restaurant.model.Waiter;
 import com.hussein.imenu_restaurant.service.AddAdmin;
+import com.hussein.imenu_restaurant.service.AddCashier;
+import com.hussein.imenu_restaurant.service.AddChef;
+import com.hussein.imenu_restaurant.service.AddManager;
+import com.hussein.imenu_restaurant.service.AddServiceTable;
 import com.hussein.imenu_restaurant.service.AddUpdateRestaurant;
 import com.hussein.imenu_restaurant.service.AddUserSpecService;
+import com.hussein.imenu_restaurant.service.AddWaiter;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -40,8 +50,7 @@ public class AdminActivity extends AppCompatActivity {
             public void onClick(View v) {
                 List<Restaurant> restaurants = createRestaurants();
                 for (int i = 0; i < restaurants.size(); i++)
-                    new AddUpdateRestaurant(AdminActivity.this, restaurants.get(i),true).execute();
-//                new AddUpdateRestaurant(AdminActivity.this, KFC,false).execute();
+                    new AddUpdateRestaurant(AdminActivity.this, restaurants.get(i), true).execute();
             }
         });
 
@@ -58,12 +67,39 @@ public class AdminActivity extends AppCompatActivity {
         addAdmin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.i("AdminActivity", "add admin");
-                Admin admin = new Admin("AbdelRahman","abdo@gmail.com","11111",KFC);
+                Log.i("AdminActivity", "add staff");
+                Chef chef = new Chef("Mohamed","mohamed@gmail.com","34567","KFC");
+                Waiter waiter = new Waiter("Ahmed","ahmed@gmail.com","12345","KFC");
+                Cashier cashier = new Cashier("Amr","Amr@gmail.com","5678","KFC");
+                Manager manager = new Manager ("Yasser","Yasser@gmail.com","148952","KFC");
+                Admin admin = new Admin ("Abdelrahman","Yasser@gmail.com","148952","KFC");
                 new AddAdmin(AdminActivity.this,admin).execute();
+                new AddCashier(AdminActivity.this,cashier).execute();
+                new AddChef(AdminActivity.this,chef).execute();
+                new AddManager(AdminActivity.this,manager).execute();
+                new AddWaiter(AdminActivity.this,waiter).execute();
             }
         });
-
+        Button addServiceTables = (Button) findViewById(R.id.add_service_tables);
+        addServiceTables.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i("AdminActivity", "add service table");
+                List<ServiceTable> serviceTables = new ArrayList<ServiceTable>();
+                ServiceTable serviceTable1 = new ServiceTable("KFC",111,1);
+                ServiceTable serviceTable2 = new ServiceTable("KFC",222,1);
+                ServiceTable serviceTable3 = new ServiceTable("KFC",333,1);
+                ServiceTable serviceTable4 = new ServiceTable("KFC",444,1);
+                ServiceTable serviceTable5 = new ServiceTable("KFC",555,1);
+                serviceTables.add(serviceTable1);
+                serviceTables.add(serviceTable2);
+                serviceTables.add(serviceTable3);
+                serviceTables.add(serviceTable4);
+                serviceTables.add(serviceTable5);
+                for(int i=0;i<serviceTables.size();i++)
+                    new AddServiceTable(AdminActivity.this,serviceTables.get(i)).execute();
+            }
+        });
     }
 
     //TODO options menu to be configured
@@ -92,11 +128,9 @@ public class AdminActivity extends AppCompatActivity {
 //                return super.onOptionsItemSelected(item);
 //        }
 //    }
-    private void addEmployees(){
 
-    }
     private List<Restaurant> createRestaurants() {
-        List<Restaurant> restaurants = new ArrayList<Restaurant>();
+        List<Restaurant> restaurants = new ArrayList<>();
 
         Restaurant restaurant_kfc= new Restaurant("KFC","Fast food","KFC Cairo",
                 "https://marketing.otlob.com/images/nl/otlob/kfcL.png",
@@ -165,31 +199,8 @@ public class AdminActivity extends AppCompatActivity {
         menu.addSection(section2);
         restaurant_kfc.addMenu(menu);
 
-//        Chef chef = new Chef("Mohamed","mohamed@gmail.com","34567",restaurant_kfc);
-//        Waiter waiter = new Waiter("Ahmed","ahmed@gmail.com","12345",restaurant_kfc);
-//        Cashier cashier = new Cashier("Amr","Amr@gmail.com","5678",restaurant_kfc);
-//        Manager manager = new Manager ("Yasser","Yasser@gmail.com","148952",restaurant_kfc);
-//
-//        List<ServiceTable> serviceTables = new ArrayList<ServiceTable>();
-//        ServiceTable serviceTable1 = new ServiceTable(restaurant_kfc,waiter,1);
-//        ServiceTable serviceTable2 = new ServiceTable(restaurant_kfc,waiter,1);
-//        ServiceTable serviceTable3 = new ServiceTable(restaurant_kfc,waiter,1);
-//        ServiceTable serviceTable4 = new ServiceTable(restaurant_kfc,waiter,1);
-//        ServiceTable serviceTable5 = new ServiceTable(restaurant_kfc,waiter,1);
-//
-//        serviceTables.add(serviceTable1);
-//        serviceTables.add(serviceTable2);
-//        serviceTables.add(serviceTable3);
-//        serviceTables.add(serviceTable4);
-//        serviceTables.add(serviceTable5);
-//
-//        restaurant_kfc.setChef(chef);
-//        restaurant_kfc.setCashier(cashier);
-//        restaurant_kfc.setManager(manager);
-//        restaurant_kfc.setServiceTables(serviceTables);
-
         KFC=restaurant_kfc;
-//        KFC.setWaiter(waiter);
+
         restaurants.add(restaurant_kfc);
 
         Restaurant restaurant_mac= new Restaurant("MAC","Fast food","MAC Cairo",

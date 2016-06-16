@@ -6,7 +6,7 @@ package com.hussein.imenu_restaurant.model;
 
 public class ServiceTable {
     private long id;
-    private Restaurant restaurant;
+    private String restaurantName;
     private int secretNumber;
     private int state;
     /*
@@ -17,17 +17,26 @@ public class ServiceTable {
 
      */
 
-    public ServiceTable(Restaurant restaurant, int state) {
-        this.restaurant = restaurant;
+    public ServiceTable() {
+    }
+
+    public ServiceTable(String restaurantName, int secretNumber, int state) {
+        this.restaurantName = restaurantName;
+        this.secretNumber = secretNumber;
         this.state = state;
     }
 
-    public Restaurant getRestaurant() {
-        return restaurant;
+    public ServiceTable(String restaurantName, int state) {
+        this.restaurantName = restaurantName;
+        this.state = state;
     }
 
-    public void setRestaurant(Restaurant restaurant) {
-        this.restaurant = restaurant;
+    public String getRestaurantName() {
+        return restaurantName;
+    }
+
+    public void setRestaurantName(String restaurantName) {
+        this.restaurantName = restaurantName;
     }
 
     public int getState() {

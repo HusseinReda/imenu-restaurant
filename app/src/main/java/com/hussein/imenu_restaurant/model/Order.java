@@ -1,5 +1,7 @@
 package com.hussein.imenu_restaurant.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.List;
 
 /**
@@ -19,8 +21,12 @@ public class Order {
      */
     int state;
     User user;
-    ServiceTable serviceTable;
+    long serviceTableId;
     List<OrderCard> orderCardList;
+
+    public Order() {
+    }
+
 
     public Long getId() {
         return id;
@@ -54,12 +60,12 @@ public class Order {
         this.user = user;
     }
 
-    public ServiceTable getServiceTable() {
-        return serviceTable;
+    public long getServiceTableId() {
+        return serviceTableId;
     }
 
-    public void setServiceTable(ServiceTable serviceTable) {
-        this.serviceTable = serviceTable;
+    public void setServiceTableId(long serviceTableId) {
+        this.serviceTableId = serviceTableId;
     }
 
     public List<OrderCard> getOrderCardList() {
@@ -68,5 +74,13 @@ public class Order {
 
     public void setOrderCardList(List<OrderCard> orderCardList) {
         this.orderCardList = orderCardList;
+    }
+
+    public void addOrderCard(OrderCard orderCard){
+        orderCardList.add(orderCard);
+    }
+
+    public void removeOrderCard(OrderCard orderCard){
+        orderCardList.remove(orderCard);
     }
 }

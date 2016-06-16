@@ -1,0 +1,135 @@
+{
+  "project_info": {
+    "project_number": "831494721880",
+    "firebase_url": "https://newproject-28b7c.firebaseio.com",
+    "project_id": "newproject-28b7c",
+    "storage_bucket": "newproject-28b7c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:831494721880:android:e49d1ff945d64585",
+        "android_client_info": {
+          "package_name": "com.temp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "831494721880-5uif6o3kh0fdovkajatsk4dhrm9i44oq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZZ5NLw5JvfulC99qob2qs0ThDHIAl31s"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:831494721880:android:18400c44301c1a1b",
+        "android_client_info": {
+          "package_name": "com.sparta"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "831494721880-5uif6o3kh0fdovkajatsk4dhrm9i44oq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZZ5NLw5JvfulC99qob2qs0ThDHIAl31s"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:831494721880:android:a22fc0ba38e5c2ec",
+        "android_client_info": {
+          "package_name": "com.sparta.imenu_client"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "831494721880-5uif6o3kh0fdovkajatsk4dhrm9i44oq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZZ5NLw5JvfulC99qob2qs0ThDHIAl31s"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:831494721880:android:ac87a18f03049b13",
+        "android_client_info": {
+          "package_name": "com.hussein.imenu_restaurant"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "831494721880-5uif6o3kh0fdovkajatsk4dhrm9i44oq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZZ5NLw5JvfulC99qob2qs0ThDHIAl31s"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

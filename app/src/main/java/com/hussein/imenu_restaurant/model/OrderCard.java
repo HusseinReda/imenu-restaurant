@@ -1,5 +1,7 @@
 package com.hussein.imenu_restaurant.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /**
  * Created by Hussein Abu Maash on 5/20/2016.
  */
@@ -17,6 +19,11 @@ public class OrderCard {
     4 -> done
      */
     int state;
+
+    Order order;
+
+    public OrderCard() {
+    }
 
     public OrderCard(Item item, int count, int state) {
         this.item = item;
@@ -54,5 +61,13 @@ public class OrderCard {
 
     public void setCount(int count) {
         this.count = count;
+    }
+
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
     }
 }

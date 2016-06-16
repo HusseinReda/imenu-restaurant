@@ -38,8 +38,10 @@ dependencies {
     compile 'com.fasterxml.jackson.core:jackson-core:2.7.4'
     compile 'com.fasterxml.jackson.core:jackson-annotations:2.7.4'
     compile 'com.fasterxml.jackson.core:jackson-databind:2.7.4'
-    compile 'com.google.android.gms:play-services-appindexing:8.1.0'
+//    compile 'com.google.android.gms:play-services-appindexing:8.1.0'
     compile 'com.goldmansachs:gs-collections-api:4.1.0'
     compile 'com.android.support:support-v4:23.1.1'
     compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'com.google.firebase:firebase-messaging:9.0.0'
 }
+apply plugin: 'com.google.gms.google-services'

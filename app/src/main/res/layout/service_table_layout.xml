@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    android:id="@+id/service_table_card_view"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    card_view:cardBackgroundColor="#d1f9cb"
+    card_view:cardCornerRadius="10dp"
+    card_view:cardElevation="5dp"
+    android:layout_margin="5dp"
+    android:foreground="?android:selectableItemBackground"
+    android:clickable="true"
+    android:longClickable="true">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/service_table_number"
+            android:padding="5dp"
+            android:textSize="20sp"
+            android:gravity="center_horizontal"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/service_table_state_text"
+            android:text="@string/state"
+            android:layout_below="@id/service_table_number"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/service_table_state"
+            android:layout_below="@id/service_table_number"
+            android:layout_toRightOf="@id/service_table_state_text"
+            android:layout_marginLeft="5dp"
+            />
+
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

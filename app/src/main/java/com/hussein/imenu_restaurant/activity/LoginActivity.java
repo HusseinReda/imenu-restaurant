@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.widget.Button;
 
 import com.hussein.imenu_restaurant.R;
+import com.hussein.imenu_restaurant.service.Auxiliary;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -19,6 +20,10 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        Auxiliary.initOrderList();
+        Auxiliary.initOrderCardList();
+        Auxiliary.initNotificationList();
 
         Button adminLogin = (Button) findViewById(R.id.admin_login);
         adminLogin.setOnClickListener(new View.OnClickListener() {

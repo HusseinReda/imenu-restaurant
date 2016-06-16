@@ -22,7 +22,7 @@ import java.util.Arrays;
 /**
  * Created by hamed on 4/1/16.
  */
-public class AddUpdateRestaurant extends AsyncTask<Void,Void,String> {
+public class AddUpdateRestaurant extends AsyncTask<Void,Void,Boolean> {
     Context context;
     Restaurant restaurant;
     boolean type; // true: add , false: update
@@ -34,16 +34,15 @@ public class AddUpdateRestaurant extends AsyncTask<Void,Void,String> {
     }
 
     @Override
-    protected String doInBackground(Void... params) {
+    protected Boolean doInBackground(Void... params) {
         RestTemplate restTemplate=  new RestTemplate();
-        restTemplate.getMessageConverters().add(new GsonHttpMessageConverter());
+        restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
         restTemplate.getMessageConverters().add(new StringHttpMessageConverter());
-        String response="";
+        boolean response;
         if(type)
-            response = restTemplate.postForObject(context.getString(R.string.url) + "restaurant/add", restaurant, String.class);
+            response = restTemplate.postForObject(context.getString(R.string.url) + "restaurant/add", restaurant, boolean.class);
         else
-            response = restTemplate.postForObject(context.getString(R.string.url)+"restaurant/update",restaurant,String.class);
-
+            response = restTemplate.postForObject(context.getString(R.string.url)+"restaurant/update",restaurant,boolean.class);
         return response;
     }
 }

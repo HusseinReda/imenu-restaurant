@@ -10,9 +10,13 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.hussein.imenu_restaurant.R;
+import com.hussein.imenu_restaurant.model.Order;
 import com.hussein.imenu_restaurant.model.OrderCard;
+import com.hussein.imenu_restaurant.service.Auxiliary;
+import com.hussein.imenu_restaurant.service.NotifyWaiterService;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -47,20 +51,19 @@ public class ItemCardRecyclerViewAdapter extends RecyclerView.Adapter<ItemCardRe
             itemState = (TextView) itemView.findViewById(R.id.card_view_item_state);
             itemId = (TextView) itemView.findViewById(R.id.cardview_item_id);
             cookingButton = (Button) itemView.findViewById(R.id.card_view_cooking_button);
-            Log.i("xx2",Boolean.toString(cookingButton.isEnabled()));
+            Log.i("xx2", Boolean.toString(cookingButton.isEnabled()));
             doneButton = (Button) itemView.findViewById(R.id.card_view_done_button);
             cookingButton.setOnClickListener(this);
             doneButton.setOnClickListener(this);
 
         }
 
-
         @Override
         public void onClick(View v) {
             if (v.getId() == R.id.card_view_cooking_button) {
                 v.setEnabled(false);
                 Log.i("xx",Boolean.toString(v.isEnabled()));
-                updateItemCard(getAdapterPosition(), 2);
+                updateItemCard(getAdapterPosition(), 3);
                 ((View)v.getParent()).findViewById(R.id.card_view_done_button).setEnabled(true);
 
             }
@@ -70,19 +73,38 @@ public class ItemCardRecyclerViewAdapter extends RecyclerView.Adapter<ItemCardRe
     }
 
     public void deleteItemCard (int position, int state){
+
+        //Log.i("adapter",Integer.toString(position));
+        //Log.i("adapter",Integer.toString(orderCards.size()));
+        //Log.i("adapter",Long.toString(orderCards.get(position)));
+        int orderIndex = Auxiliary.getIncludingOrderIndex(orderCards.get(position).getId());
+        Auxiliary.orderList.get(orderIndex).getOrderCardList().remove(orderCards.get(position));
         orderCards.remove(position);
+        if(Auxiliary.orderList.get(orderIndex).getOrderCardList().isEmpty()){
+            NotifyWaiterService notifyWaiterService = new NotifyWaiterService(Auxiliary.orderList.get(orderIndex).getId());
+            notifyWaiterService.execute();
+            Toast.makeText(context,"order "+Auxiliary.orderList.get(orderIndex).getId()+" has finished",Toast.LENGTH_SHORT).show();
+            Auxiliary.orderList.remove(orderIndex);
+
+        }
+
+
+            // send notification to the waiter with the service table number
         notifyItemRemoved(position);
     }
 
     public void updateItemCard (int position,int state){
         orderCards.get(position).setState(state);
+        int orderIndex = Auxiliary.getIncludingOrderIndex(orderCards.get(position).getId());
+        int orderCardsIndex = Auxiliary.getIncludingOrderCardIndex(orderIndex,orderCards.get(position).getId());
+        Auxiliary.orderList.get(orderIndex).getOrderCardList().get(orderCardsIndex).setState(state);
         //notifyItemChanged(position);
         notifyDataSetChanged();
     }
 
 
-    public ItemCardRecyclerViewAdapter(List<OrderCard> orderCards, Context context) {
-        this.orderCards = orderCards;
+    public ItemCardRecyclerViewAdapter(Context context) {
+        this.orderCards = Auxiliary.orderCardList;
         this.context=context;
     }
 
@@ -100,12 +122,12 @@ public class ItemCardRecyclerViewAdapter extends RecyclerView.Adapter<ItemCardRe
         itemViewHolder.currentItem=currentItem;
         itemViewHolder.itemId.setText(Long.toString(currentItem.getItem().getId()));
         itemViewHolder.itemName.setText(currentItem.getItem().getName());
-        itemViewHolder.itemCount.setText(Integer.toString(currentItem.getCount()));
-        if(currentItem.getState()==1)
+        itemViewHolder.itemCount.setText("Quantity: "+ currentItem.getCount());
+        if(currentItem.getState()==2)
             itemViewHolder.itemState.setText("Not Cooked");
-        else if(currentItem.getState()==2)
-            itemViewHolder.itemState.setText("Cooking");
         else if(currentItem.getState()==3)
+            itemViewHolder.itemState.setText("Cooking");
+        else if(currentItem.getState()==4)
             itemViewHolder.itemState.setText("Done");
         Picasso.with(context).load(currentItem.getItem().getPicture())
                 .error(R.drawable.no_image)

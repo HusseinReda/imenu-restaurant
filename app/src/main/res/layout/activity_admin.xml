@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.sparta.imenu_client.activity.AdminActivity">
+    tools:callingActivity="com.sparta.imenu_client.activity.AdminActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -51,5 +51,13 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="add service tables"
+        android:id="@+id/add_service_tables"
+        android:layout_below="@+id/add_admin"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>

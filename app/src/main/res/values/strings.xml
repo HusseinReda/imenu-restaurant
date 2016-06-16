@@ -4,7 +4,7 @@
     <string name="admin">Admin</string>
     <string name="chef">Chef</string>
     <string name="waiter">Waiter</string>
-    <string name="cashier">Cachier</string>
+    <string name="cashier">Cashier</string>
     <string name="manager">Manager</string>
     <string name="title_activity_admin">AdminActivity</string>
     <string name="action_profile">Profile</string>
@@ -79,4 +79,9 @@
     <string name="title_activity_waiter">WaiterActivity</string>
     <string name="cooking">Cooking</string>
     <string name="done">Done</string>
+    <string name="state">State:</string>
+    <string name="state_of_the_table">State of the table:</string>
+    <string name="unlock">Unlock</string>
+    <string name="lock">Lock</string>
+    <string name="title_activity_main">MainActivity</string>
 </resources>

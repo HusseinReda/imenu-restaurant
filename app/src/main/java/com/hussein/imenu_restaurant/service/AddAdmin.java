@@ -2,6 +2,7 @@ package com.hussein.imenu_restaurant.service;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import com.hussein.imenu_restaurant.R;
 import com.hussein.imenu_restaurant.model.Admin;
@@ -14,7 +15,7 @@ import org.springframework.web.client.RestTemplate;
  * Created by Hussein Abu Maash on 6/8/2016.
  */
 
-public class AddAdmin extends AsyncTask<Void,Void,String> {
+public class AddAdmin extends AsyncTask<Void,Void,Boolean> {
     Context context;
     Admin admin;
 
@@ -24,11 +25,17 @@ public class AddAdmin extends AsyncTask<Void,Void,String> {
     }
 
     @Override
-    protected String doInBackground(Void... params) {
+    protected Boolean doInBackground(Void... params) {
         RestTemplate restTemplate=  new RestTemplate();
         restTemplate.getMessageConverters().add(new GsonHttpMessageConverter());
         restTemplate.getMessageConverters().add(new StringHttpMessageConverter());
-        String response = restTemplate.postForObject(context.getString(R.string.url)+"admin/add",admin,String.class);
+        boolean response=false;
+        try {
+            response = restTemplate.postForObject(context.getString(R.string.url) + "admin/add", admin, boolean.class);
+        }
+        catch (Exception e){
+            Log.i("add admin",e.getMessage().toString());
+        }
         return response;
     }
 }

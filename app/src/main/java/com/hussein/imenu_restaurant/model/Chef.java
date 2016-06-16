@@ -13,13 +13,13 @@ public class Chef implements Serializable {
     private String email;
     private String password;
     private String name;
-    private Restaurant restaurant;
+    private String restaurantName;
     public  Chef(){}
-    public Chef(String name, String email, String password, Restaurant restaurant) {
+    public Chef(String name, String email, String password, String restaurantName) {
         this.email = email;
         this.password = password;
         this.name = name;
-        this.restaurant = restaurant;
+        this.restaurantName = restaurantName;
     }
     public Long getId() {
         return id;
@@ -53,11 +53,11 @@ public class Chef implements Serializable {
         this.name = name;
     }
 
-    public Restaurant getRestaurant() {
-        return restaurant;
+    public String getRestaurantName() {
+        return restaurantName;
     }
 
-    public void setRestaurant(Restaurant restaurant) {
-        this.restaurant = restaurant;
+    public void setRestaurantName(String restaurantName) {
+        this.restaurantName = restaurantName;
     }
 }
